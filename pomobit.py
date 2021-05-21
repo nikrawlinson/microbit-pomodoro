@@ -14,13 +14,12 @@ def workcycle():
                 if microbit.button_a.was_pressed():
                     waiting()
                 if microbit.button_b.was_pressed():
-                    restcycle()
+                    return
             microbit.display.set_pixel(x, y, 0)
-    restcycle()
+    microbit.sleep(1000)
         
 def restcycle():
 
-    microbit.sleep(1000)
     microbit.display.scroll("Take a break")
     microbit.sleep(1000)
     for t in reversed(range(5)):
@@ -31,10 +30,9 @@ def restcycle():
             if microbit.button_a.was_pressed():
                 waiting()
             if microbit.button_b.was_pressed():
-                workcycle()
+                return
     microbit.display.clear()
     microbit.sleep(1000)
-    workcycle()
     
 def waiting():
 
@@ -42,6 +40,8 @@ def waiting():
 
     while True:
         if microbit.button_a.was_pressed():
-            workcycle()
+            while True:
+                workcycle()
+                restcycle()
             
 waiting()

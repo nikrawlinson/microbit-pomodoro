@@ -2,7 +2,7 @@ import microbit
 
 def workcycle():
     
-    microbit.display.scroll("W")
+    microbit.display.scroll("Time to work")
     microbit.sleep(1000)
     for y in range(5):
         for x in range(5):
@@ -20,7 +20,7 @@ def workcycle():
         
 def restcycle():
 
-    microbit.display.scroll("B")
+    microbit.display.scroll("Take a break")
     microbit.sleep(1000)
     for t in reversed(range(5)):
         time = t + 1
